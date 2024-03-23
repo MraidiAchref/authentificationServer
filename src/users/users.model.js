@@ -5,6 +5,7 @@ const userSchema = new Schema(
   {
     email: {
       type: String,
+      unique: true,
     },
     password: {
       type: String,
@@ -13,11 +14,11 @@ const userSchema = new Schema(
       type: Number,
     },
     name: {
-        type: String,
+      type: String,
     },
     lastName: {
-        type: String,
-    }
+      type: String,
+    },
   },
   {
     timestamps: true,

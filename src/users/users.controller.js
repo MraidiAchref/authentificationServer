@@ -15,3 +15,15 @@ exports.signIn = async (req, res) => {
   }
   return res.status(200).json(user);
 };
+
+exports.udpateUser = async (req, res) => {
+  const filter = { email: req.body.email, password: req.body.password };
+  const update = req.body;
+
+  const updatedDocument = await UsersModel.findOneAndUpdate(filter, update, {
+    new: true,
+  });
+
+  if (!updatedDocument) return res.sendStatus(404);
+  else res.status(200).json(updatedDocument);
+};
