@@ -1,5 +1,5 @@
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1yYWlkaTNAdGVzdC5jb20iLCJpYXQiOjE3MTEzODI3MzEsImV4cCI6MTcxMTM4Mjc5MX0.BjlDh_Uv9TZzLvX-kVxszrDSYqBYHkoMmaK3bsvUAQE
-@refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1yYWlkaTNAdGVzdC5jb20iLCJpYXQiOjE3MTEzODQxNTEsImV4cCI6MTcxMTM4NTM1MX0.-j5PNitC61Ms_mrrznvSJUAJJE8rPRzLyHtl-cdW-N0
+@refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1yYWlkaTNAdGVzdC5jb20iLCJpYXQiOjE3MTE0MDQ4MjUsImV4cCI6MTcxMTQwODQyNX0.mCBJkoMRpUMG4qkCYJoEVT21kwHfbwiegB1-IPEhP_k
 
 ###
 POST  http://127.0.0.1:3000/users/signUp HTTP/1.1
@@ -39,8 +39,7 @@ Authorization: bearer {{ token  }}
 
 
 ###
-POST  http://127.0.0.1:3000/users/refreshToken HTTP/1.1
-Content-Type: application/json 
+GET  http://127.0.0.1:3000/users/refreshToken
 Authorization: bearer {{ refreshToken  }}
 
 {

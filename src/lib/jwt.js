@@ -28,17 +28,3 @@ exports.authenticateRefreshToken = errorWrapper((req, res, next) => {
   });
 });
 
-exports.authRefreshToken = errorWrapper( (req, res,next) => {
-    const authHeader = req.headers.authorization;
-    const refreshToken = authHeader && authHeader.split(' ')[1];
-    if (!refreshToken) throw new Error('UNAUTHENTICATED');
-    jwt.verify( refreshToken, process.env.ACCESS_TOKEN_SECRET_REFRESH, (err, user) => {
-        
-        if (err)  throw new Error('UNAUTHORIZED');
-        req.user = user;
-        next() ;
-
-    });
-
-
-})

@@ -15,6 +15,6 @@ router.post("/signIn", errorWrapper(usersController.signIn));
 
 router.post( "/updateUser", authenticateToken, errorWrapper(usersController.udpateUser));
 
-router.post("/refreshToken", authRefreshToken, errorWrapper(usersController.refreshToken));
+router.get("/refreshToken", authenticateRefreshToken, errorWrapper(usersController.refreshToken));
 
 module.exports = router;
