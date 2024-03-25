@@ -4,10 +4,10 @@ const app = require("./app");
 const express = require("express");
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URL, {
+/*mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+});*/
 
 const port = process.env.PORT_CLIENT || 3000;
 const server = require("http").createServer(app);

@@ -1,9 +1,12 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1yYWlkaTNAdGVzdC5jb20iLCJpYXQiOjE3MTEzODI3MzEsImV4cCI6MTcxMTM4Mjc5MX0.BjlDh_Uv9TZzLvX-kVxszrDSYqBYHkoMmaK3bsvUAQE
+@refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1yYWlkaTNAdGVzdC5jb20iLCJpYXQiOjE3MTEzODQxNTEsImV4cCI6MTcxMTM4NTM1MX0.-j5PNitC61Ms_mrrznvSJUAJJE8rPRzLyHtl-cdW-N0
+
 ###
 POST  http://127.0.0.1:3000/users/signUp HTTP/1.1
 Content-Type: application/json 
 
 {
-    "email": "mraidi@test.com",
+    "email": "ref@test.com",
     "password": "testtest",
     "age": 28,
     "name": "achref",
@@ -17,7 +20,7 @@ POST  http://127.0.0.1:3000/users/signIn HTTP/1.1
 Content-Type: application/json 
 
 {
-    "email": "mraidi@test.com",
+    "email": "mraidi3@test.com",
     "password": "testtest"
 
 }
@@ -25,10 +28,21 @@ Content-Type: application/json
 ###
 POST  http://127.0.0.1:3000/users/udpateUser HTTP/1.1
 Content-Type: application/json 
+Authorization: bearer {{ token  }}
 
 {
-    "email": "mraidi@test.com",
+    "email": "mraidi44@test.com",
     "password": "testtest",
-    "age": 45
+    "age": 554
+
+}
+
+
+###
+POST  http://127.0.0.1:3000/users/refreshToken HTTP/1.1
+Content-Type: application/json 
+Authorization: bearer {{ refreshToken  }}
+
+{
 
 }
