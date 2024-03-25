@@ -1,7 +1,10 @@
 const UsersModel = require("./users.model");
 const jwt = require("../lib/jwt");
+const bcrypt = require('bcrypt') ;
+
 
 exports.signUp = async (req, res) => {
+  req.body.password =  await bcrypt.hash(req.body.password , 10) ;
   await UsersModel.create(req.body);
   const accessToken = jwt.generateAccessToken({ email: req.body.email });
 
@@ -12,9 +15,10 @@ exports.signUp = async (req, res) => {
 exports.signIn = async (req, res) => {
   var user = await UsersModel.findOne({
     email: req.body.email,
-    password: req.body.password,
+
   });
-  if (!user) {
+
+  if (!user || ! await bcrypt.compare(req.body.password , user.password)) {
     return res.sendStatus(404);
   }
   const accessToken = jwt.generateAccessToken({ email: req.body.email });

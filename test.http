@@ -6,8 +6,8 @@ POST  http://127.0.0.1:3000/users/signUp HTTP/1.1
 Content-Type: application/json 
 
 {
-    "email": "ref@test.com",
-    "password": "testtest",
+    "email": "hased@test.com",
+    "password": "hasedpass",
     "age": 28,
     "name": "achref",
     "lastName":"mraidi"
@@ -20,8 +20,8 @@ POST  http://127.0.0.1:3000/users/signIn HTTP/1.1
 Content-Type: application/json 
 
 {
-    "email": "mraidi3@test.com",
-    "password": "testtest"
+    "email": "hased@test.com",
+    "password": "hasedpas"
 
 }
 
