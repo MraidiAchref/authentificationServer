@@ -1,6 +1,7 @@
 const UsersModel = require("./users.model");
 const jwt = require("../lib/jwt");
 const bcrypt = require('bcrypt') ;
+const
 
 
 exports.signUp = async (req, res) => {
@@ -46,3 +47,20 @@ exports.refreshToken = (req, res) => {
   const newToken = jwt.generateAccessToken({ email: req.user.email });
   return res.status(200).json({ accesToken: newToken });
 };
+
+
+exports.forgotPassword = async (req, res , next )  => {
+    // get the user 
+    const user = await  UsersModel.findOne({email : req.body.email})
+    if (!user ) return res.sendStatus(404);
+
+    //generate reset token 
+
+    //send token back
+
+}
+
+exports.resetPassword = ( req, res , next ) => {
+
+
+}

@@ -17,4 +17,9 @@ router.post( "/updateUser", authenticateToken, errorWrapper(usersController.udpa
 
 router.get("/refreshToken", authenticateRefreshToken, errorWrapper(usersController.refreshToken));
 
+router.post("/forgotPassword", errorWrapper(usersController.forgotPassword));
+
+router.post("/resetPassword", errorWrapper(usersController.resetPassword));
+
+
 module.exports = router;
