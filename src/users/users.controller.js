@@ -1,7 +1,7 @@
 const UsersModel = require("./users.model");
 const jwt = require("../lib/jwt");
 const bcrypt = require('bcrypt') ;
-const
+
 
 
 exports.signUp = async (req, res) => {
