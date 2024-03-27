@@ -45,3 +45,21 @@ Authorization: bearer {{ refreshToken  }}
 {
 
 }
+
+###
+POST  http://127.0.0.1:3000/users/forgotPassword HTTP/1.1
+Content-Type: application/json 
+
+{
+    "email": "mraidi@test.com"
+}
+
+
+###
+PATCH   http://127.0.0.1:3000/users/resetPassword/296fa46a9de3b305ee5bc2e9c26b6f97 HTTP/1.1
+Content-Type: application/json 
+
+{
+    "password": "178",
+    "confirmPassword":"178"    
+}

@@ -19,7 +19,7 @@ router.get("/refreshToken", authenticateRefreshToken, errorWrapper(usersControll
 
 router.post("/forgotPassword", errorWrapper(usersController.forgotPassword));
 
-router.post("/resetPassword", errorWrapper(usersController.resetPassword));
+router.patch("/resetPassword/:resetPassword", errorWrapper(usersController.resetPassword));
 
 
 module.exports = router;
