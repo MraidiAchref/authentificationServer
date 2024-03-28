@@ -6,12 +6,12 @@ const crypto = require('crypto')
 
 
 exports.signUp = async (req, res) => {
-    console.log("pass" + req.body.password) ;
-    req.body.password = await  bcrypt.hash(req.body.password , 10) ;
-  await UsersModel.create(req.body);
-  const accessToken = jwt.generateAccessToken({ email: req.body.email });
+    req.body.password = await  bcrypt.hash(req.body.formData.password , 10) ;
+  await UsersModel.create(req.body.formData);
 
-  const refreshToken = jwt.generateRefreshToken({ email: req.body.email });
+  const accessToken = jwt.generateAccessToken({ email: req.body.formData.email });
+
+  const refreshToken = jwt.generateRefreshToken({ email: req.body.formData.email });
   return res.status(200).json({ accessToken, refreshToken });
 };
 

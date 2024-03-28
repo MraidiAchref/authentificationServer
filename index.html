@@ -31,9 +31,9 @@
     </form>
 
     <script >
-         document.getElementById('signupForm').addEventListener('submit', function(e) {
+         document.getElementById('signupForm').addEventListener('submit', function(e)  {
             e.preventDefault(); 
-
+            
             const formData = {
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value,
@@ -41,8 +41,7 @@
                 name: document.getElementById('name').value,
                 lastName: document.getElementById('lastName').value
             };
-            console.log(formData)
-            fetch('http://127.0.0.1:3000/users/signUp', {
+             fetch('http://127.0.0.1:3000/users/signUp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
