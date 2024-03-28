@@ -6,7 +6,8 @@ const crypto = require('crypto')
 
 
 exports.signUp = async (req, res) => {
-  req.body.password =  await bcrypt.hash(req.body.password , 10) ;
+    console.log("pass" + req.body.password) ;
+    req.body.password = await  bcrypt.hash(req.body.password , 10) ;
   await UsersModel.create(req.body);
   const accessToken = jwt.generateAccessToken({ email: req.body.email });
 
@@ -51,16 +52,13 @@ exports.refreshToken = (req, res) => {
 
 
 exports.forgotPassword = async (req, res , next )  => {
-    // get the user 
     const user = await  UsersModel.findOne({email : req.body.email})
     if (!user ) return res.sendStatus(404);
 
-    //generate reset token 
     const resetPassword = user.createResetPassword() ;
     user.save() ;
-    //send token back
-    const resetUrl = `${req.protocol}://${req.get('host')}/users/resetPassword/${resetPassword}`
-    const message = `Please use the bellow link to reset your password.\n\n${resetUrl}\n\nPlease take note that this password is available only for 10 min` 
+    //const resetUrl = `${req.protocol}://${req.get('host')}/users/resetPassword/${resetPassword}`
+    const message = `Please use the bellow password to reset your password.\n\n${resetPassword}\n\nPlease take note that this password is available only for 10 min` 
 
     try{
       await sendEmail({
@@ -87,7 +85,7 @@ exports.forgotPassword = async (req, res , next )  => {
 
 exports.resetPassword = async ( req, res , next ) => {
 
-  const hashedResetPassword = crypto.createHash('sha256').update(req.params.resetPassword).digest('hex');
+  const hashedResetPassword = crypto.createHash('sha256').update(req.body.resetPassword).digest('hex');
   const user = await UsersModel.findOne({resetPassword: hashedResetPassword , resetPasswordExpires: {$gt: Date.now() }}) ; 
 
   if(!user) return res.status(404) ;
