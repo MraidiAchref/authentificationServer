@@ -1,25 +1,44 @@
 {
-  "name": "authentificationserver",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "nextjs-authentification-server",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "concurrently \"nodemon ./server.js\" \"next dev -p 8000\" -n \"SERVER, NEXT \" --prefix-colors \"cyan,magenta\" ",
+    "prod": "next build && next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
-    "express": "^4.19.1",
-    "http": "^0.0.1-security",
+    "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.2.3",
+    "mongoose": "^8.3.0",
+    "mui": "^0.0.1",
+    "next": "14.1.4",
     "nodemailer": "^6.9.13",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }

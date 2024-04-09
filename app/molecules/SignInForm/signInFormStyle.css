@@ -1,0 +1,63 @@
+button{
+    background-color: white;
+    border-width: 1px;
+    color: none;
+    border-radius: 3px;
+    padding: 10px;
+    width: 90px;
+    margin: 10px;
+
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+button:hover{
+    
+    border-width: 0px 0px 1.5px 0px;
+    
+}
+.signInForm-container{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: center;
+    justify-items: center;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 32px 4px rgba(39,180,214,0.73);
+-webkit-box-shadow: 0px 0px 32px 4px rgba(39,180,214,0.73);
+-moz-box-shadow: 0px 0px 32px 4px rgba(39,180,214,0.73);
+    
+    
+}
+
+input{
+    width: 100%;
+}
+ 
+.email-field-container > input{
+    margin-left: 34px;
+}
+
+
+label{
+    margin-right: 30px;
+
+}
+
+.email-field-container{
+    display:flex;
+    width: 60%;
+    margin-bottom: 10px;
+
+}
+.password-field-container{
+    display: flex;
+    width: 60%;
+    margin-bottom: 10px;
+
+}
