@@ -6,10 +6,10 @@ const useSignInStore = create((set,get) => ({
     email: '',
     password: '',
     loading: false,
-    userFound:true ,
+    userFound: true,
     handleChangeEmail: (value) => {set({ email: value })} ,
     handleChangePassword: (value) => {set({password: value})} ,
-    handleClickSignIn: async () => {
+    handleClickSignIn: async (userFound) => {
         try {
             set({loading: true});
             const response = await axios.post(REGISTER_URL,
@@ -24,6 +24,9 @@ const useSignInStore = create((set,get) => ({
             console.log(response.status);
 
             set({loading:false}) ;
+            if (userFound) {
+                window.location.href = 'http://127.0.0.1:8000'; 
+            }
 
 
 

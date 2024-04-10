@@ -16,7 +16,7 @@ export default function SignInForm(){
         <div className="signInForm-container">
             <div className="email-field-container">
                 <label>Email </label>
-                <input placeholder="Email" onChange={ (e) => handleChangeEmail(e.target.value)}/>
+                <input placeholder="Email" onChange={ (e) => handleChangeEmail(e.target.value)} />
             </div>
             
             <div className="password-field-container">
