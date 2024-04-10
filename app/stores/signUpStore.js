@@ -8,6 +8,7 @@ const useSignUpStore = create ((set,get) => ({
     name:'',
     lastName:'',
     age:0,
+    invalidInput:false ,
     loading: false,
     handleChangeEmail: (value) => {set({ email:value })},
     handleChangePassword: (value) => {set({ password:value })},
@@ -16,6 +17,18 @@ const useSignUpStore = create ((set,get) => ({
     handleChangeAge: (value) => {set({ age:value })},
     handleClickSignUp: async  () => {
         try{
+            const emailInput =get().email ;
+            const passwordInput =get().password ;
+            const nameInput =get().name ;
+            const lastNameInput =get().lastName ;
+            const ageInput =get().age ;
+            if( emailInput == "" || passwordInput == "" ||nameInput == "" ||lastNameInput == "" ||ageInput == 0  ){
+                throw new Error("Empty field") ;
+            }
+            if (isNaN(ageInput) ) {
+                throw new Error("Invalid age") ;
+            }
+
             set({loading: true});
             const response = await axios.post(REGISTER_URL,
             JSON.stringify({
@@ -33,8 +46,10 @@ const useSignUpStore = create ((set,get) => ({
             set({loading:false}) ;
         }catch(error){
             console.error('Error signing up:',error);
-            set({loading:false});
 
+            set({invalidInput:true})
+            set({loading:false});
+            
         }
     }
 

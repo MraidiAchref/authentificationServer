@@ -1,4 +1,4 @@
-import { create } from "zustand";
+ import { create } from "zustand";
 import axios from "../api/axios";
 const REGISTER_URL= '/users/signIn'
 
@@ -9,7 +9,7 @@ const useSignInStore = create((set,get) => ({
     userFound: true,
     handleChangeEmail: (value) => {set({ email: value })} ,
     handleChangePassword: (value) => {set({password: value})} ,
-    handleClickSignIn: async (userFound) => {
+    handleClickSignIn: async () => {
         try {
             set({loading: true});
             const response = await axios.post(REGISTER_URL,
@@ -22,17 +22,18 @@ const useSignInStore = create((set,get) => ({
                 withCredentials: true
             });
             console.log(response.status);
-
-            set({loading:false}) ;
-            if (userFound) {
+            if (response.status == 200) {
                 window.location.href = 'http://127.0.0.1:8000'; 
             }
+            set({loading:false}) ;
+     
+            
 
 
 
         }catch(error) {
             console.log('Error signing in:',error);
-            set({userFound:false}) ;
+            set({userFound:false}) 
             set({loading:false}) ;
         }
     }

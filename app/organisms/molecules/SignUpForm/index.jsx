@@ -9,13 +9,13 @@ import { CircularProgress } from "@mui/material";
 
 
 export default function SignUpForm(){
-    const { handleChangeEmail, handleChangePassword,handleChangeName,handleChangeLastName,handleChangeAge, handleClickSignUp, loading } = useSignUpStore();
+    const { handleChangeEmail, handleChangePassword,handleChangeName,handleChangeLastName,handleChangeAge, handleClickSignUp,invalidInput ,loading } = useSignUpStore();
 
     return (
         <div className="signUpForm-container">
-            <div className="email-field-container">
+            <div className="email-field-container" >
                 <label>Email </label>
-                <input placeholder="Email" onChange={ (e) => handleChangeEmail(e.target.value)}/>
+                <input  placeholder="Email" onChange={ (e) => handleChangeEmail(e.target.value)}/>
             </div>
             
             <div className="password-field-container">
@@ -41,8 +41,13 @@ export default function SignUpForm(){
             <div className="buttons-container">
                 {!loading ?
                 <button onClick={handleClickSignUp}> Sign Up </button>:<CircularProgress/>  }
-                <button> Forgot password ? </button>
-            </div>           
+                <button onClick={(e) => window.location.href = 'http://127.0.0.1:8000/sign-in'}> Sign In </button>
+            </div>          
+            {
+                !invalidInput ? 
+                null :
+                <p className="input-status-container" > invalid input </p>   
+            } 
         </div>
     )
 }

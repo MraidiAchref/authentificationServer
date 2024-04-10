@@ -3,7 +3,7 @@ import React from "react";
 import "./signInFormStyle.css";
 import useSignInStore from "../../../stores/signInStore.js"
 import { CircularProgress } from "@mui/material";
-
+import handleForgotPasswordRequest from "../../../stores/forgotPassStore.js"
 
 
 
@@ -16,12 +16,12 @@ export default function SignInForm(){
         <div className="signInForm-container">
             <div className="email-field-container">
                 <label>Email </label>
-                <input placeholder="Email" onChange={ (e) => handleChangeEmail(e.target.value)} />
+                <input id="email-input" placeholder="Email"  onChange={ (e) => handleChangeEmail(e.target.value)} />
             </div>
             
             <div className="password-field-container">
                 <label > Password </label>
-                <input type="password" placeholder="Password" onChange={(e) => handleChangePassword(e.target.value)}/> 
+                <input  type="password" placeholder="Password" onChange={(e) => handleChangePassword(e.target.value)}/> 
             </div>
 
             <div className="buttons-container">
@@ -29,8 +29,9 @@ export default function SignInForm(){
                     <button onClick={handleClickSignIn} > Sign In </button> : <CircularProgress/>     
                 }
                 <button onClick={handleClickSignUp}> Sign Up </button>
-            </div>    
-            {
+            </div>  
+            <p className="forgot-password-link" onClick={handleForgotPasswordRequest}> Forgot password ? </p> 
+            {   
                 userFound ? 
                 null :
                 <p className="login-status-container"> User not found. Please check your credentials or sign up if you haven't already. </p>   

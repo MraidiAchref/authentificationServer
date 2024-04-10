@@ -64,3 +64,9 @@ label{
 .login-status-container{
     color:red
 }
+
+.forgot-password-link{
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}

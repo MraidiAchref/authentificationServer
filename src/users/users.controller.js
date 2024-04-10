@@ -51,7 +51,7 @@ exports.refreshToken = (req, res) => {
 
 exports.forgotPassword = async (req, res, next) => {
   const user = await UsersModel.findOne({ email: req.body.email });
-  if (!user) return res.sendStatus(404);
+  if (!user) return res.status(404);
 
   const resetPassword = user.createResetPassword();
   user.save();
