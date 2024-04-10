@@ -1,15 +1,17 @@
 'use client'
 import React from "react";
 import "./signInFormStyle.css";
-import useSignInStore from "../../stores/signInStore.js"
+import useSignInStore from "../../../stores/signInStore.js"
 import { CircularProgress } from "@mui/material";
 
 
 
 
 export default function SignInForm(){
-    const { handleChangeEmail, handleChangePassword, handleClickSignIn, loading } = useSignInStore();
-
+    const { handleChangeEmail, handleChangePassword, handleClickSignIn, loading ,userFound} = useSignInStore();
+    const handleClickSignUp = () => {
+        window.location.href = 'http://127.0.0.1:8000/sign-up';
+    };
     return (
         <div className="signInForm-container">
             <div className="email-field-container">
@@ -24,10 +26,16 @@ export default function SignInForm(){
 
             <div className="buttons-container">
                 {!loading ?
-                    <button onClick={handleClickSignIn}> Sign In </button> : <CircularProgress/>     
+                    <button onClick={handleClickSignIn} > Sign In </button> : <CircularProgress/>     
                 }
-                <button> Sign Up </button>
-            </div>           
+                <button onClick={handleClickSignUp}> Sign Up </button>
+            </div>    
+            {
+                userFound ? 
+                null :
+                <p className="login-status-container"> User not found. Please check your credentials or sign up if you haven't already. </p>   
+            }   
         </div>
+        
     )
 }

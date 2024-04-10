@@ -1,7 +1,7 @@
 'use client'
 import React from "react";
 import "./signUpFormStyle.css";
-import useSignUpStore from "../../stores/signUpStore.js"
+import useSignUpStore from "../../../stores/signUpStore.js"
 import { CircularProgress } from "@mui/material";
 
 

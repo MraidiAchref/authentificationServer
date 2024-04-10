@@ -1,5 +1,5 @@
 import React from "react";
-import SignUpForm from "../molecules/SignUpForm"
+import SignUpForm from "../organisms/molecules/SignUpForm"
 import "./signUpPageStyle.css"
 import { sign } from "crypto";
 

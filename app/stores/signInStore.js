@@ -6,6 +6,7 @@ const useSignInStore = create((set,get) => ({
     email: '',
     password: '',
     loading: false,
+    userFound:true ,
     handleChangeEmail: (value) => {set({ email: value })} ,
     handleChangePassword: (value) => {set({password: value})} ,
     handleClickSignIn: async () => {
@@ -20,11 +21,15 @@ const useSignInStore = create((set,get) => ({
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             });
-            console.log(response.data);
+            console.log(response.status);
+
             set({loading:false}) ;
 
+
+
         }catch(error) {
-            console.error('Error signing in:',error);
+            console.log('Error signing in:',error);
+            set({userFound:false}) ;
             set({loading:false}) ;
         }
     }
