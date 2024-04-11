@@ -30,7 +30,7 @@ export default function SignInForm(){
                 }
                 <button onClick={handleClickSignUp}> Sign Up </button>
             </div>  
-            <p className="forgot-password-link" onClick={handleForgotPasswordRequest}> Forgot password ? </p> 
+            <p className="forgot-password-link" onClick={ handleForgotPasswordRequest}> Forgot password ? </p> 
             {   
                 userFound ? 
                 null :
