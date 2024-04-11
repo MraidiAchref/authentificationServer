@@ -1,11 +1,12 @@
 const { errors } = require("./errors");
+const { ERROR_CODES } = require("./errorCodes");
 
 const errorWrapper = (handler) => {
   return async (req, res, next) => {
     try {
       await handler(req, res, next);
     } catch (e) {
-      const errorMessage = {
+      const error = {
         timestamp: new Date().toISOString(),
         api: req.originalUrl,
         payload: req.body,
@@ -13,15 +14,12 @@ const errorWrapper = (handler) => {
         details: e.details,
         stack: e.stack,
       };
-      if (errors[e.message]) {
-        console.log(errorMessage);
-        return res.status(errors[e.message]).json({ message: e.message });
+      return  errors[e.message]
+        ? res.status(errors[e.message]).json({ message: e.message })
+        : res.status(500).json({ error: ERROR_CODES.INTERNAL_SERVER_ERROR });
       }
-
-      console.log(errorMessage);
-
-      res.status(500).json({ error: "Internal Server Error" });
-    }
+      
+    
   };
 };
 

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import axios from "../api/axios";
 const REGISTER_URL = "/users/signUp";
+import {errorWrapper} from "../../src/lib/error/errorWrapper"
 
 const useSignUpStore = create((set, get) => ({
   email: "",
@@ -47,6 +48,7 @@ const useSignUpStore = create((set, get) => ({
       }
 
       set({ loading: true });
+
       const response = await axios.post(
         REGISTER_URL,
         JSON.stringify({

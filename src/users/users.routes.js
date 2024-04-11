@@ -1,6 +1,6 @@
 const express = require("express");
 const usersController = require("./users.controller");
-const { errorWrapper } = require("../lib/errorHandler");
+const { errorWrapper } = require("../lib/error/errorWrapper");
 const {
   authRefreshToken,
   authenticateRefreshToken,

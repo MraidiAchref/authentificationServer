@@ -3,12 +3,17 @@ const jwt = require("../lib/jwt");
 const bcrypt = require("bcrypt");
 const sendEmail = require("../utils/email");
 const crypto = require("crypto");
+const { ERROR_CODES } = require("../lib/error/errorCodes");
+
 
 exports.signUp = async (req, res) => {
   var { email, password, age, name, lastName } = req.body;
-  password = await bcrypt.hash(password, 10);
-  await UsersModel.create({ email, password, age, name, lastName });
+  const user = await UsersModel.findOne({ email });
+  if (user) throw new Error(ERROR_CODES.USER_ALREADY_EXISTS);
 
+  password = await bcrypt.hash(password, 10);
+  const response = await UsersModel.create({ email, password, age, name, lastName });
+  console.log(response);  
   const accessToken = jwt.generateAccessToken({ email: email });
 
   const refreshToken = jwt.generateRefreshToken({ email: email });
