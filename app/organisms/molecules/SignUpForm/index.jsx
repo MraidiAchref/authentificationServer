@@ -9,7 +9,7 @@ import { CircularProgress } from "@mui/material";
 
 
 export default function SignUpForm(){
-    const { handleChangeEmail, handleChangePassword,handleChangeName,handleChangeLastName,handleChangeAge, handleClickSignUp,invalidInput ,loading } = useSignUpStore();
+    const { handleChangeEmail, handleChangePassword,handleChangeName,handleChangeLastName,handleChangeAge, handleClickSignUp,errorType,invalidInput ,loading } = useSignUpStore();
 
     return (
         <div className="signUpForm-container">
@@ -46,7 +46,7 @@ export default function SignUpForm(){
             {
                 !invalidInput ? 
                 null :
-                <p className="input-status-container" > invalid input </p>   
+                <p className="input-status-container" > {errorType} </p>   
             } 
         </div>
     )
