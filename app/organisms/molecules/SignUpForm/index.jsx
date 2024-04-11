@@ -41,7 +41,7 @@ export default function SignUpForm(){
             <div className="buttons-container">
                 {!loading ?
                 <button onClick={handleClickSignUp}> Sign Up </button>:<CircularProgress/>  }
-                <button onClick={(e) => window.location.href = 'http://127.0.0.1:8000/sign-in'}> Sign In </button>
+                <button onClick={(e) => window.location.href = 'sign-in'}> Sign In </button>
             </div>          
             {
                 !invalidInput ? 

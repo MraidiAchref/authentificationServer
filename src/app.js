@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 
-const config = require("../database/authDB");
+const config= require("../database/authDB");
 config();
 
 const corsOptions = {
@@ -17,5 +17,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/users', require('./users/users.routes'));
+
+app.use('/animes', require('./anime/anime.routes'));
+
 
 module.exports = app;

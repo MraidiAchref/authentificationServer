@@ -10,7 +10,7 @@ import handleForgotPasswordRequest from "../../../stores/forgotPassStore.js"
 export default function SignInForm(){
     const { handleChangeEmail, handleChangePassword, handleClickSignIn, loading ,userFound} = useSignInStore();
     const handleClickSignUp = () => {
-        window.location.href = 'http://127.0.0.1:8000/sign-up';
+        window.location.href = '/sign-up';
     };
     return (
         <div className="signInForm-container">

@@ -4,15 +4,26 @@ const mongoose = require('mongoose');
 
 module.exports = function () {
   
-  const mongoconnectionlink = process.env.MONGODB_URL;
+  const mongoConnectionLinkAuthDB = process.env.MONGODB_URL_AUTH_DB;
+  const mongoConnectionLinkAnimeDB = process.env.MONGODB_URL_ANIME_DB;
 
-  mongoose.connect(
-    mongoconnectionlink,
-   // { useUnifiedTopology: true },
+  // Connect to the authentication database
+  const connectionAuthDB = mongoose.createConnection(
+    mongoConnectionLinkAuthDB ,
+    { useNewUrlParser: true, useUnifiedTopology: true }
   );
-  mongoose.connection.once('open', () => {
-    console.log(`Connected to MongoDB [CLIENT ENVIRMOMENT]: ${process.env.NODE_ENV}`);
+  connectionAuthDB.once('open', () => {
+    console.log(`Connected to MongoDB AUTH [CLIENT ENVIRONMENT]: ${process.env.NODE_ENV}`);
   }).on('error', (error) => {
-    console.log('Connection error:', error);
+    console.log('Connection error to MongoDB AUTH:', error);
   });
+
+  //Connect to the anime database
+  const connectionAnimeDB = mongoose.createConnection(mongoConnectionLinkAnimeDB,{ useNewUrlParser: true, useUnifiedTopology: true });
+  connectionAnimeDB.once('open', () => {
+    console.log(`Connected to MongoDB ANIME [CLIENT ENVIRONMENT]: ${process.env.NODE_ENV}`);
+  }).on('error', (error) => {
+    console.log('Connection error to MongoDB ANIME:', error);
+  });
+  
 };

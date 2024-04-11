@@ -23,7 +23,7 @@ const useSignInStore = create((set,get) => ({
             });
             console.log(response.status);
             if (response.status == 200) {
-                window.location.href = 'http://127.0.0.1:8000'; 
+                window.location.href = '/home'; 
             }
             set({loading:false}) ;
      

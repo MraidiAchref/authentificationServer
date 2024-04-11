@@ -66,7 +66,7 @@ const useSignUpStore = create((set, get) => ({
       console.log(response);
       set({ invalidInput: false });
       set({ loading: false });
-      window.location.href = "http://127.0.0.1:8000/sign-in";
+      window.location.href = "/sign-in";
     } catch (error) {
       set({ errorType: error.message });
       set({ invalidInput: true });
