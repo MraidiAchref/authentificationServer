@@ -1,0 +1,9 @@
+.app-bar {
+  position: "static";
+}
+
+.menu-icon-button {
+  size: "large";
+  color: #ffffff;
+  margin: 5px;
+}

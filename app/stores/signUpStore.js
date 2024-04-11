@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "../api/axios";
 const REGISTER_URL = "/users/signUp";
-import {errorWrapper} from "../../src/lib/error/errorWrapper"
+import {ERROR_CODES} from "../../src/lib/error/errorCodes"
 
 const useSignUpStore = create((set, get) => ({
   email: "",
@@ -41,15 +41,15 @@ const useSignUpStore = create((set, get) => ({
         lastNameInput == "" ||
         ageInput == 0
       ) {
-        throw new Error("Empty field");
+       throw new Error(ERROR_CODES.EMPTY_FIELD);
       }
       if (isNaN(ageInput)) {
-        throw new Error("Invalid age");
+        throw new Error(ERROR_CODES.INVALID_AGE);
       }
 
       set({ loading: true });
 
-      const response = await axios.post(
+       const response = await axios.post(
         REGISTER_URL,
         JSON.stringify({
           email: get().email,
@@ -63,19 +63,12 @@ const useSignUpStore = create((set, get) => ({
           withCredentials: true,
         }
       );
-      console.log(response.data);
+      console.log(response);
       set({ invalidInput: false });
       set({ loading: false });
       window.location.href = "http://127.0.0.1:8000/sign-in";
     } catch (error) {
-      if (error.message === "Empty field") {
-        
-        set({ errorType: "Empty field" });
-
-      } else if (error.message === "Invalid age") {
-
-        set({ errorType: "Invalid age" });
-      }
+      set({ errorType: error.message });
       set({ invalidInput: true });
       set({ loading: false });
     }
