@@ -47,7 +47,7 @@ exports.read = async (req, res) => {
 };
 
 exports.readAllByUid = async (req, res) => {
-  const animeList = await AnimeModel.find({ uid: req.params.uid });
+  const animeList = await AnimeModel["animes"].find({ uid: req.params.uid });
 
  
   if (animeList.length === 0) throw new Error('NOT_FOUND') 
