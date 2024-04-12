@@ -26,3 +26,7 @@
     border: 1px solid #ccc; 
     border-radius: 4px; 
 }
+
+.pagination-bar {
+    margin-top: 20px;
+}

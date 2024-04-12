@@ -1,5 +1,5 @@
 import React from "react";
-import SignInForm from "../organisms/molecules/SignInForm"; 
+import SignInForm from "../components/organisms/SignInForm"; 
 import "./signInPageStyle.css"
 
 

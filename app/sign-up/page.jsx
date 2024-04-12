@@ -1,5 +1,5 @@
 import React from "react";
-import SignUpForm from "../organisms/molecules/SignUpForm"
+import SignUpForm from "../components/organisms/SignUpForm"
 import "./signUpPageStyle.css"
 
 export default function signUp() {

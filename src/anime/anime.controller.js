@@ -66,18 +66,10 @@ exports.readAllByUid = async (req, res) => {
 
 
 exports.readAll = async (req, res) => {
-  const limitNbr = req.params.limitNbr ;
-  const anime = await AnimeModel.find().limit(limitNbr);
-  var response = [] ;
-  for (let i =0 ; i<limitNbr ; i++){
-      response.push({
-            title:anime[i].title,
-            img_url:anime[i].img_url,
-            score:anime[i].score,
-            episodes:anime[i].episodes
-      })
-  }
-  return res.status(200).json(response);
+  
+  const anime = await AnimeModel.find();
+
+  return res.status(200).json(anime);
 
 };
 
