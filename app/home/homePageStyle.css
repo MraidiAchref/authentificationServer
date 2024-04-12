@@ -15,3 +15,14 @@
     align-self: center;
     justify-self: center;
 }
+
+.number-of-displayed-anime-selector{
+    position: fixed;
+    top: 64px; 
+    right: 20px; 
+    z-index: 1000; 
+    background-color: white; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}

@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 
-const config= require("../database/authDB");
+const config= require("../database/database.js");
 config();
 
 const corsOptions = {

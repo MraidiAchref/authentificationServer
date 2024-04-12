@@ -1,3 +1,14 @@
 .card {
-    width: 200;
+    width: 250px;
+    height: 400px;
+}
+.poster-image {
+    width: 225px;
+    height: 320px;
+}
+
+.anime-title{
+    font-weight:bold;
+    margin-top: 5px;
+    font-size: 1.2em;
 }
