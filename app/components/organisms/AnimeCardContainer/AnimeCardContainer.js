@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import "./AnimeCardContainerStyle.css";
 import Card from "../../molecules/animeCard/animeCard";
-import DataContainer from "./DataContainer";
 import dataManager from "./dataManager";
 
 export default function AnimeCardContainer({ animesPerPage ,pageNumber  }) {
