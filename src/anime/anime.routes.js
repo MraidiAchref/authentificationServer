@@ -12,7 +12,9 @@ router.post("/update-anime", errorWrapper(animeController.update));
 
 router.get("/read-anime/:uid", errorWrapper(animeController.read));
 
-router.get("/readAll", errorWrapper(animeController.readAll));
+router.get("/readAll/:fromAnimeNumber/:toAnimeNumber", errorWrapper(animeController.readAll));
+
+router.get("/countAnimes", errorWrapper(animeController.countAnimes));
 
 router.get("/readAll-anime/:uid", errorWrapper(animeController.readAllByUid));
 

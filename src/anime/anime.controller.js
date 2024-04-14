@@ -67,9 +67,18 @@ exports.readAllByUid = async (req, res) => {
 
 exports.readAll = async (req, res) => {
   
-  const anime = await AnimeModel.find();
 
+  const anime = await AnimeModel.find().skip(req.params.fromAnimeNumber).limit(req.params.toAnimeNumber);
+  
   return res.status(200).json(anime);
+
+};
+
+exports.countAnimes = async (req, res) => {
+  
+  const count = await AnimeModel.countDocuments({});
+
+  return res.status(200).json(count);
 
 };
 

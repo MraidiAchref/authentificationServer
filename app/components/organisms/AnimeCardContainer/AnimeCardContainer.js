@@ -5,14 +5,15 @@ import Card from "../../molecules/animeCard/animeCard";
 import DataContainer from "./DataContainer";
 import dataManager from "./dataManager";
 
-export default function AnimeCardContainer({ animesPerPage ,pageNumber ,onLengthChange  }) {
+export default function AnimeCardContainer({ animesPerPage ,pageNumber  }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const {result,length} = await dataManager();
-      const wondredAmountOfAnime = result.slice(pageNumber*animesPerPage,(pageNumber+1)*animesPerPage)
-      setData(wondredAmountOfAnime);
-      onLengthChange(Math.ceil(length/animesPerPage));
+
+      const result = await dataManager((pageNumber-1)*animesPerPage,animesPerPage);
+      
+      const wondredAmountOfAnime = result.slice((pageNumber-1)*animesPerPage,animesPerPage)
+      setData(result);
     };
 
     fetchData();
