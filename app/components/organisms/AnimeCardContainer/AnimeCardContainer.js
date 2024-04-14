@@ -11,7 +11,6 @@ export default function AnimeCardContainer({ animesPerPage ,pageNumber  }) {
 
       const result = await dataManager((pageNumber-1)*animesPerPage,animesPerPage);
       
-      const wondredAmountOfAnime = result.slice((pageNumber-1)*animesPerPage,animesPerPage)
       setData(result);
     };
 
